@@ -7,7 +7,7 @@ boot: auto
 arch:
   - amd64
 url: 'https://github.com/jhaveripatric/Homeassistant-addons-ollama'
-image: 'ollama/ollama:latest'  # Updated to use the latest tag
+image: 'docker.io/ollama/ollama:latest'  # Corrected image field
 webui: 'http://[HOST]:[PORT:11400]/'
 ingress: true
 ingress_port: 11400
