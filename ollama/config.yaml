@@ -29,3 +29,5 @@ schema:
   model_path: str
   enable_logs: bool
   debug: bool
+icon: "/icon.png"    # Add this line for the icon
+logo: "/logo.png"    # Add this line for the logo
