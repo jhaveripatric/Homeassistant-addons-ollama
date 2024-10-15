@@ -1,5 +1,5 @@
 name: Ollama
-version: 1.0
+version: latest
 slug: ollama
 description: Run the Ollama AI service in a Docker container as a Home Assistant add-on.
 startup: application
