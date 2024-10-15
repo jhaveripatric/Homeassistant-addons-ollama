@@ -7,7 +7,7 @@ boot: auto
 arch:
   - amd64
 url: 'https://github.com/jhaveripatric/Homeassistant-addons-ollama'
-image: 'ollama/ollama:latest'
+image: 'ollama/ollama:latest'  # Updated to use the latest tag
 webui: 'http://[HOST]:[PORT:11400]/'
 ingress: true
 ingress_port: 11400
@@ -29,5 +29,5 @@ schema:
   model_path: str
   enable_logs: bool
   debug: bool
-icon: "/icon.png"    # Add this line for the icon
-logo: "/logo.png"    # Add this line for the logo
+icon: "/icon.png"    # Icon path
+logo: "/logo.png"    # Logo path
