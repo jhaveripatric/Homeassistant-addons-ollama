@@ -1,0 +1,12 @@
+name: "Ollama"
+version: "1.0"
+slug: "ollama"
+description: "Run the Ollama AI service in a Docker container as a Home Assistant add-on."
+arch:
+  - amd64
+startup: services
+ports:
+  11400/tcp: 11400  # Expose the Ollama port
+options: {}
+schema: {}
+image: "ollama/ollama:latest"  # The Docker image from Docker Hub
