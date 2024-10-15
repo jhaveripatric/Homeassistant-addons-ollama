@@ -1,14 +1,31 @@
-name: "Ollama"
-version: "1.0"
-slug: "ollama"
-description: "Run the Ollama AI service in a Docker container as a Home Assistant add-on."
+name: Ollama
+version: 1.0
+slug: ollama
+description: Run the Ollama AI service in a Docker container as a Home Assistant add-on.
+startup: application
+boot: auto
 arch:
-  - aarch64
   - amd64
-  - armv7
-startup: services
+url: 'https://github.com/jhaveripatric/Homeassistant-addons-ollama'
+image: 'ollama/ollama'
+webui: 'http://[HOST]:[PORT:11400]/'
+ingress: true
+ingress_port: 11400
+map:
+  - ssl
+watchdog: 'http://[HOST]:[PORT:11400]/'
 ports:
-  11400/tcp: 11400  # Expose the Ollama port
-options: {}
-schema: {}
-image: "ollama/ollama:latest"  # The Docker image from Docker Hub
+  11400/tcp: null
+ports_description:
+  11400/tcp: 'Ollama AI API access port'
+init: false
+options:
+  api_key: ''
+  model_path: '/models'  # Example custom option for specifying models
+  enable_logs: true
+  debug: false
+schema:
+  api_key: str
+  model_path: str
+  enable_logs: bool
+  debug: bool
