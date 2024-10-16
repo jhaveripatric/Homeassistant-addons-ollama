@@ -15,9 +15,8 @@ if [ ! -d "/root/.ollama/models/${MODEL_NAME}" ]; then
   ollama run "${MODEL_NAME}"
 fi
 
-# Serve the WebUI files and start the Ollama service
+# Serve the web UI files and start the Ollama service
 bashio::log.info "Ollama service starting on static port 11434..."
-# Use Python to serve the web UI on port 11435
-python3 -m http.server 11435 --directory /usr/share/ollama/webui &
-# Start the Ollama service
-ollama serve --port=11434
+
+# Combine serving the web UI and starting Ollama service
+ollama serve --port=11434 --static-path=/usr/share/ollama/webui

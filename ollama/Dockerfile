@@ -7,15 +7,11 @@ COPY run.sh /usr/local/bin/run.sh
 # Make sure the run.sh script is executable
 RUN chmod +x /usr/local/bin/run.sh
 
-# Install Python to serve the web UI
-RUN apt-get update && apt-get install -y python3
-
 # Copy the web UI files into the container
 COPY webui /usr/share/ollama/webui
 
-# Expose the static port 11434
+# Expose the static port
 EXPOSE 11434
-EXPOSE 11435
 
 # Set the default entrypoint to the run.sh script
 ENTRYPOINT ["/usr/local/bin/run.sh"]
