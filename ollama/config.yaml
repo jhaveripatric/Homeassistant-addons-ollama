@@ -19,6 +19,8 @@ ports:
 ports_description:
   11400/tcp: 'Ollama AI API access port'  # Description for the port usage.
 init: false  # Set to false since no initialization steps are needed before starting the add-on.
+icon: "/icon.png"  # Path to the add-on's icon.
+logo: "/logo.png"  # Path to the add-on's logo.
 
 # Define the configurable options for the add-on
 options:
@@ -59,6 +61,3 @@ schema:
   max_queue: int  # Ensures max_queue is an integer.
   num_parallel: int  # Ensures num_parallel is an integer.
   load_timeout: str  # Ensures load_timeout is a string.
-
-icon: "/icon.png"  # Path to the add-on's icon.
-logo: "/logo.png"  # Path to the add-on's logo.
