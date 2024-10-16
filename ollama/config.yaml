@@ -31,7 +31,9 @@ options:
   max_loaded_models: 0  # Maximum number of models that can be loaded into memory. 0 means no limit.
   enable_logs: true  # Enables logging. If true, logs are output to Home Assistant's log system.
   debug: false  # If true, enables detailed debugging logs for the Ollama service.
+  host: 'http://0.0.0.0:11434'  # Host and port where the Ollama service will bind.
   load_models: ['llama3.2:3b']  # List of models to load automatically when the add-on starts.
+  download_models: []  # List of models to download automatically when the add-on starts.
   intel_gpu: false  # If true, the add-on will attempt to use Intel GPU for processing.
   gpu_overhead: 0  # Adjusts GPU overhead for performance tuning. 0 means default behavior.
   keep_alive: '5m0s'  # Specifies the keep-alive time for the Ollama service.
@@ -48,6 +50,8 @@ schema:
   debug: bool  # Ensures the debug option is a boolean.
   host: str  # Ensures the host address is a string.
   load_models: # Defines a list of strings for loading models
+    - str
+  download_models: # Defines a list of strings for downloading models
     - str
   intel_gpu: bool  # Ensures the intel_gpu option is a boolean.
   gpu_overhead: int  # Ensures gpu_overhead is an integer.
