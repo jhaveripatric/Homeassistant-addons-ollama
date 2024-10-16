@@ -11,6 +11,8 @@ image: 'docker.io/ollama/ollama'  # Docker image to be used. This is pulled from
 webui: 'http://[HOST]:[PORT:11400]/'  # The Web UI URL for the add-on, accessible via Home Assistant's ingress system.
 ingress: true  # Enables ingress, allowing the add-on to be accessed via the Home Assistant interface without exposing external ports.
 ingress_port: 11400  # The port used by Home Assistant's ingress system to proxy traffic for this add-on.
+panel_icon: 'mdi:robot'  # Use a Material Design Icon (MDI) for the sidebar icon
+panel_title: "Ollama AI"  # The title shown in the Home Assistant sidebar
 map:
   - ssl  # Specifies that SSL configuration should be mapped from Home Assistant's environment.
 watchdog: 'http://[HOST]:[PORT:11400]/'  # Monitors the add-on at this URL to ensure it is still running and responsive.
