@@ -1,0 +1,11 @@
+## [Latest Version]
+### Added
+- Added Python to Docker image for serving the web UI.
+- Added `run.sh` script to start Ollama service and serve the web UI.
+- Included a web interface to list available models and interact with the loaded model.
+- Added HTML and JavaScript to provide the functionality of sending chat prompts to the model.
+- Defined ingress support to make the add-on available directly from Home Assistant UI.
+
+### Changed
+- Modified Dockerfile to include installation of Python.
+- Updated `run.sh` to declare and assign configuration values separately to avoid masking return values.
