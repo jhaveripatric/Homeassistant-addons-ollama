@@ -1,5 +1,5 @@
 name: Ollama
-version: 1.2
+version: 1.3
 slug: ollama
 description: "Run the Ollama AI service in a Docker container as a Home Assistant add-on."
 startup: application  # Start the add-on after Home Assistant starts
@@ -24,7 +24,7 @@ init: false
 # Define the configurable options for the add-on
 options:
   model_name: "llama3.2:3b"  # Default model to load
-  debug: true
+  debug: false
 
 # Define the schema for the options
 schema:
