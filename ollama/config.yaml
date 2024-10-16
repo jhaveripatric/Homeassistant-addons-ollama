@@ -25,7 +25,7 @@ init: false
 # Define the configurable options for the add-on
 options:
   model_name: "llama3.2:3b"  # Default model to load
-  debug: true
+  debug: false
 
 # Define the schema for the options
 schema:
