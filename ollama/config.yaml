@@ -1,5 +1,5 @@
 name: Ollama
-version: 1.2
+version: latest
 slug: ollama
 description: "Run the Ollama AI service in a Docker container as a Home Assistant add-on."
 startup: application  # Start the add-on after Home Assistant starts
@@ -7,7 +7,7 @@ boot: auto  # The add-on starts automatically with Home Assistant
 arch:
   - amd64
 url: 'https://github.com/jhaveripatric/Homeassistant-addons-ollama'
-image: 'docker.io/ollama/ollama:latest'
+image: 'docker.io/ollama/ollama'
 webui: 'http://[HOST]:[PORT:11435]/'  # The Web UI URL for the add-on
 ingress: true  # Enable ingress to show the add-on inside Home Assistant UI
 panel_icon: 'mdi:robot'  # Sidebar icon in Home Assistant
