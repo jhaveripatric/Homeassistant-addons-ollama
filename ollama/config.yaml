@@ -47,14 +47,10 @@ schema:
   enable_logs: bool  # Ensures the enable_logs option is a boolean (true/false).
   debug: bool  # Ensures the debug option is a boolean.
   host: str  # Ensures the host address is a string.
-  load_models:
-    type: list
-    items:
-      type: str  # Ensures load_models is a list of strings.
-  download_models:
-    type: list
-    items:
-      type: str  # Ensures download_models is a list of strings.
+  load_models: # Defines a list of strings for loading models
+    - str
+  download_models: # Defines a list of strings for downloading models
+    - str
   intel_gpu: bool  # Ensures the intel_gpu option is a boolean.
   gpu_overhead: int  # Ensures gpu_overhead is an integer.
   keep_alive: str  # Ensures keep_alive is a string.
