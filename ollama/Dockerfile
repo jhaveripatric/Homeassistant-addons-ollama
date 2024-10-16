@@ -1,8 +1,6 @@
 # Base image for the Ollama service
 FROM docker.io/ollama/ollama:latest
 
-RUN chmod 755 run.sh
-
 # Copy the custom run.sh script into the container
 COPY run.sh /usr/local/bin/run.sh
 
