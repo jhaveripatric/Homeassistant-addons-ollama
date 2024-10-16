@@ -2,32 +2,63 @@ name: Ollama
 version: latest
 slug: ollama
 description: Run the Ollama AI service in a Docker container as a Home Assistant add-on.
-startup: application
-boot: auto
+startup: application  # Defines when the add-on should start. "application" means it starts after Home Assistant has started.
+boot: auto  # Specifies that the add-on starts automatically on Home Assistant boot.
 arch:
-  - amd64
+  - amd64  # Architecture that the add-on supports, here it's for x86_64 systems.
 url: 'https://github.com/jhaveripatric/Homeassistant-addons-ollama'
-image: 'docker.io/ollama/ollama'  # Corrected image field
-webui: 'http://[HOST]:[PORT:11400]/'
-ingress: true
-ingress_port: 11400
+image: 'docker.io/ollama/ollama'  # Docker image to be used. This is pulled from Docker Hub.
+webui: 'http://[HOST]:[PORT:11400]/'  # The Web UI URL for the add-on, accessible via Home Assistant's ingress system.
+ingress: true  # Enables ingress, allowing the add-on to be accessed via the Home Assistant interface without exposing external ports.
+ingress_port: 11400  # The port used by Home Assistant's ingress system to proxy traffic for this add-on.
 map:
-  - ssl
-watchdog: 'http://[HOST]:[PORT:11400]/'
+  - ssl  # Specifies that SSL configuration should be mapped from Home Assistant's environment.
+watchdog: 'http://[HOST]:[PORT:11400]/'  # Monitors the add-on at this URL to ensure it is still running and responsive.
 ports:
-  11400/tcp: null
+  11400/tcp: null  # Port 11400 exposed by the add-on. It's set to null, meaning it will only be available via ingress.
 ports_description:
-  11400/tcp: 'Ollama AI API access port'
-init: false
+  11400/tcp: 'Ollama AI API access port'  # Description for the port usage.
+init: false  # Set to false since no initialization steps are needed before starting the add-on.
+
+# Define the configurable options for the add-on
 options:
-  api_key: ''
-  model_path: '/models'  # Example custom option for specifying models
-  enable_logs: true
-  debug: false
+  api_key: ''  # API key for authentication (if required by the Ollama service).
+  model_path: '/models'  # Path where models are stored and loaded by the Ollama service.
+  max_loaded_models: 0  # Maximum number of models that can be loaded into memory. 0 means no limit.
+  enable_logs: true  # Enables logging. If true, logs are output to Home Assistant's log system.
+  debug: false  # If true, enables detailed debugging logs for the Ollama service.
+  host: 'http://0.0.0.0:11434'  # Host and port where the Ollama service will bind.
+  load_models: []  # List of models to load automatically when the add-on starts.
+  download_models: []  # List of models to download automatically when the add-on starts.
+  intel_gpu: false  # If true, the add-on will attempt to use Intel GPU for processing.
+  gpu_overhead: 0  # Adjusts GPU overhead for performance tuning. 0 means default behavior.
+  keep_alive: '5m0s'  # Specifies the keep-alive time for the Ollama service.
+  max_queue: 512  # Maximum number of requests that can be queued for processing.
+  num_parallel: 0  # Number of parallel requests that can be processed. 0 means auto-determined by the service.
+  load_timeout: '5m0s'  # Timeout for loading models. If the model doesn't load within this time, the load process is aborted.
+
+# Define the schema to enforce data types for each option
 schema:
-  api_key: str
-  model_path: str
-  enable_logs: bool
-  debug: bool
-icon: "/icon.png"    # Icon path
-logo: "/logo.png"    # Logo path
+  api_key: str  # Ensures the API key is a string.
+  model_path: str  # Ensures the model path is a string.
+  max_loaded_models: int  # Ensures the maximum loaded models option is an integer.
+  enable_logs: bool  # Ensures the enable_logs option is a boolean (true/false).
+  debug: bool  # Ensures the debug option is a boolean.
+  host: str  # Ensures the host address is a string.
+  load_models:
+    type: list
+    items:
+      type: str  # Ensures load_models is a list of strings.
+  download_models:
+    type: list
+    items:
+      type: str  # Ensures download_models is a list of strings.
+  intel_gpu: bool  # Ensures the intel_gpu option is a boolean.
+  gpu_overhead: int  # Ensures gpu_overhead is an integer.
+  keep_alive: str  # Ensures keep_alive is a string.
+  max_queue: int  # Ensures max_queue is an integer.
+  num_parallel: int  # Ensures num_parallel is an integer.
+  load_timeout: str  # Ensures load_timeout is a string.
+
+icon: "/icon.png"  # Path to the add-on's icon.
+logo: "/logo.png"  # Path to the add-on's logo.
