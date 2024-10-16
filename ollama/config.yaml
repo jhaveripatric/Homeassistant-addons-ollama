@@ -10,6 +10,7 @@ url: 'https://github.com/jhaveripatric/Homeassistant-addons-ollama'
 image: 'ollama/ollama'
 webui: 'http://[HOST]:[PORT:11434]/'  # The Web UI URL for the add-on
 ingress: true  # Enable ingress to show the add-on inside Home Assistant UI
+ingress_port: 11434
 panel_icon: 'mdi:robot'  # Sidebar icon in Home Assistant
 panel_title: "Ollama AI"  # Title shown in the Home Assistant sidebar
 map:
