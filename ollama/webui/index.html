@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ollama AI Service</title>
+    <script>
+		// Function to fetch and display the available models
+		function listModels() {
+			const apiUrl = '/api/models';
+			fetch(apiUrl)
+				.then(response => {
+					if (!response.ok) {
+						throw new Error('Network response was not ok');
+					}
+					return response.json();
+				})
+				.then(data => {
+					const modelListElement = document.getElementById('modelList');
+					modelListElement.innerHTML = '';
+					if (data && data.models) {
+						data.models.forEach(model => {
+							const listItem = document.createElement('li');
+							listItem.textContent = model;
+							modelListElement.appendChild(listItem);
+						});
+					} else {
+						modelListElement.innerHTML = '<li>No models available.</li>';
+					}
+				})
+				.catch(error => {
+					console.error('Error fetching models:', error);
+				});
+		}
+
+		// Function to send a chat prompt to the model
+		function chatWithModel() {
+			const prompt = document.getElementById('userPrompt').value;
+			const apiUrl = '/api/generate';
+			fetch(apiUrl, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({
+										 model: 'LLaMA 3.1B',
+										 prompt: prompt
+									 })
+			})
+				.then(response => {
+					if (!response.ok) {
+						throw new Error('Network response was not ok');
+					}
+					return response.json();
+				})
+				.then(data => {
+					const responseElement = document.getElementById('modelResponse');
+					responseElement.textContent = data.response;
+				})
+				.catch(error => {
+					console.error('Error sending prompt:', error);
+				});
+		}
+
+		// Load models when the page loads
+		window.onload = function() {
+			listModels();
+		};
+    </script>
+</head>
+<body>
+<h1>Ollama AI Service</h1>
+<h2>Available Models:</h2>
+<ul id="modelList">
+    <!-- Models will be listed here -->
+</ul>
+<h2>Chat with LLaMA 3.1B:</h2>
+<label for="userPrompt">Enter your prompt:</label>
+<input type="text" id="userPrompt" placeholder="Enter your prompt here...">
+<button onclick="chatWithModel()">Send</button>
+<p><strong>Response:</strong> <span id="modelResponse"></span></p>
+</body>
+</html>
