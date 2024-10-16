@@ -7,7 +7,7 @@ boot: auto  # The add-on starts automatically with Home Assistant
 arch:
   - amd64
 url: 'https://github.com/jhaveripatric/Homeassistant-addons-ollama'
-image: 'docker.io/ollama/ollama:latest'
+image: 'ollama/ollama:latest'
 webui: 'http://[HOST]:[PORT:11435]/'  # The Web UI URL for the add-on
 ingress: true  # Enable ingress to show the add-on inside Home Assistant UI
 panel_icon: 'mdi:robot'  # Sidebar icon in Home Assistant
